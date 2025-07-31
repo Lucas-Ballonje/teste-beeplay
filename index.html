@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeePlayTV - Todo o Entretenimento em Um Só Lugar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Overlay de Entrada -->
+    <div class="entry-overlay" id="entryOverlay">
+        <div class="overlay-content">
+            <img src="logo.png" alt="BeePlayTV Logo" class="overlay-logo">
+            <h2>OFERTA EXCLUSIVA!</h2>
+            <p>Apenas hoje: <span class="highlight">20% OFF</span> em qualquer plano!</p>
+            <div class="countdown">
+                <p>Esta oferta expira em:</p>
+                <div id="timer">
+                    <span id="hours">12</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                </div>
+            </div>
+            <button class="cta-button pulse" onclick="closeOverlay()">QUERO APROVEITAR AGORA!</button>
+            <span class="close-overlay" onclick="closeOverlay()">×</span>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="BeePlayTV Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#features">Recursos</a></li>
+                    <li><a href="#plans">Planos</a></li>
+                    <li><a href="#faq">Dúvidas</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <a href="#trial" class="trial-button">TESTE GRÁTIS</a>
+            </div>
+            <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" onclick="closeMobileMenu()">Início</a></li>
+            <li><a href="#features" onclick="closeMobileMenu()">Recursos</a></li>
+            <li><a href="#plans" onclick="closeMobileMenu()">Planos</a></li>
+            <li><a href="#faq" onclick="closeMobileMenu()">Dúvidas</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contato</a></li>
+            <li><a href="#trial" class="trial-button-mobile" onclick="closeMobileMenu()">TESTE GRÁTIS</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>REVOLUCIONE SUA EXPERIÊNCIA DE TV</h1>
+            <h2>TODO O ENTRETENIMENTO DO MUNDO EM UM SÓ LUGAR</h2>
+            <p>Mais de 50.000 conteúdos. Sem travamentos. Cancele quando quiser.</p>
+            <div class="hero-cta">
+                <a href="#plans" class="cta-button pulse">COMECE AGORA - 24 HORAS GRÁTIS</a>
+                <p class="users-count"><i class="fas fa-users"></i> <span id="activeUsers">1,547</span> pessoas assistindo agora</p>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <video autoplay muted loop id="hero-video">
+            <source src="video-placeholder.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+    </section>
+
+    <!-- Notificação Flutuante -->
+    <div class="floating-notification" id="notification">
+        <div class="notification-content">
+            <div class="notification-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="notification-text">
+                <p><strong>João de São Paulo</strong> acabou de assinar o plano anual!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Vídeo -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>VEJA COMO FUNCIONA</h2>
+                <p>Descubra por que milhares de pessoas estão trocando a TV tradicional pela BeePlayTV</p>
+            </div>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <i class="far fa-play-circle"></i>
+                    <p>Clique para assistir</p>
+                </div>
+            </div>
+            <div class="video-features">
+                <div class="feature">
+                    <i class="fas fa-tv"></i>
+                    <h3>Canais Premium</h3>
+                    <p>Acesso a todos os canais fechados, esportes e filmes</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Multi-dispositivos</h3>
+                    <p>Assista em Smart TVs, celulares, tablets e computadores</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-film"></i>
+                    <h3>Filmes e Séries</h3>
+                    <p>Catálogo completo com lançamentos e clássicos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Comparação -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>ECONOMIZE COM A BEEPLAYTV</h2>
+                <p>Compare o custo de múltiplos serviços de streaming com nossa solução única</p>
+            </div>
+            <div class="comparison-container">
+                <div class="comparison-item traditional">
+                    <h3>TV TRADICIONAL + STREAMINGS</h3>
+                    <div class="price">
+                        <span class="currency">R$</span>
+                        <span class="amount">350</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-times"></i> Múltiplas assinaturas</li>
+                        <li><i class="fas fa-times"></i> Conteúdo limitado</li>
+                        <li><i class="fas fa-times"></i> Contratos longos</li>
+                        <li><i class="fas fa-times"></i> Equipamentos caros</li>
+                        <li><i class="fas fa-times"></i> Sem portabilidade</li>
+                    </ul>
+                </div>
+                <div class="vs">VS</div>
+                <div class="comparison-item beeplay">
+                    <h3>BEEPLAYTV</h3>
+                    <div class="price">
+                        <span class="currency">R$</span>
+                        <span class="amount">25</span>
+                        <span class="period">/mês*</span>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Assinatura única</li>
+                        <li><i class="fas fa-check"></i> Conteúdo ilimitado</li>
+                        <li><i class="fas fa-check"></i> Cancele quando quiser</li>
+                        <li><i class="fas fa-check"></i> Sem equipamentos adicionais</li>
+                        <li><i class="fas fa-check"></i> Assista em qualquer lugar</li>
+                    </ul>
+                    <p class="note">* No plano anual</p>
+                    <a href="#plans" class="cta-button">ECONOMIZE AGORA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Recursos -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>TUDO O QUE VOCÊ PRECISA</h2>
+                <p>Descubra por que a BeePlayTV é a escolha perfeita para seu entretenimento</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Canais do Mundo Todo</h3>
+                    <p>Acesse canais nacionais e internacionais com qualidade HD e 4K.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Esportes ao Vivo</h3>
+                    <p>Todos os campeonatos, ligas e torneios esportivos em um só lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Filmes e Séries</h3>
+                    <p>Catálogo completo com lançamentos e clássicos para toda a família.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Conteúdo Infantil</h3>
+                    <p>Canais e programas educativos e de entretenimento para crianças.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Multi-dispositivos</h3>
+                    <p>Assista em Smart TVs, celulares, tablets e computadores.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Suporte 24/7</h3>
+                    <p>Atendimento personalizado a qualquer hora do dia ou da noite.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Planos -->
+    <section id="plans" class="plans-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>ESCOLHA SEU PLANO</h2>
+                <p>Planos flexíveis para atender às suas necessidades</p>
+            </div>
+            <div class="plans-container">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>MENSAL</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">35</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todos os canais</li>
+                            <li><i class="fas fa-check"></i> Filmes e séries</li>
+                            <li><i class="fas fa-check"></i> Qualidade HD/4K</li>
+                            <li><i class="fas fa-check"></i> 1 tela simultânea</li>
+                            <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                        </ul>
+                    </div>
+                    <div class="plan-cta">
+                        <a href="#checkout" class="cta-button">ASSINAR AGORA</a>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>TRIMESTRAL</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">95</span>
+                            <span class="period">/3 meses</span>
+                        </div>
+                        <div class="plan-savings">
+                            <p>Equivalente a <strong>R$ 31,67/mês</strong></p>
+                            <p class="save">Economize R$ 10</p>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todos os canais</li>
+                            <li><i class="fas fa-check"></i> Filmes e séries</li>
+                            <li><i class="fas fa-check"></i> Qualidade HD/4K</li>
+                            <li><i class="fas fa-check"></i> 1 tela simultânea</li>
+                            <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                        </ul>
+                    </div>
+                    <div class="plan-cta">
+                        <a href="#checkout" class="cta-button">ASSINAR AGORA</a>
+                    </div>
+                </div>
+                <div class="plan-card popular">
+                    <div class="popular-tag">MAIS POPULAR</div>
+                    <div class="plan-header">
+                        <h3>SEMESTRAL</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">170</span>
+                            <span class="period">/6 meses</span>
+                        </div>
+                        <div class="plan-savings">
+                            <p>Equivalente a <strong>R$ 28,33/mês</strong></p>
+                            <p class="save">Economize R$ 40</p>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todos os canais</li>
+                            <li><i class="fas fa-check"></i> Filmes e séries</li>
+                            <li><i class="fas fa-check"></i> Qualidade HD/4K</li>
+                            <li><i class="fas fa-check"></i> 2 telas simultâneas</li>
+                            <li><i class="fas fa-check"></i> Suporte 24/7 prioritário</li>
+                        </ul>
+                    </div>
+                    <div class="plan-cta">
+                        <a href="#checkout" class="cta-button pulse">ASSINAR AGORA</a>
+                    </div>
+                </div>
+                <div class="plan-card best-value">
+                    <div class="best-value-tag">MELHOR CUSTO-BENEFÍCIO</div>
+                    <div class="plan-header">
+                        <h3>ANUAL</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">300</span>
+                            <span class="period">/ano</span>
+                        </div>
+                        <div class="plan-savings">
+                            <p>Equivalente a <strong>R$ 25/mês</strong></p>
+                            <p class="save">Economize R$ 120</p>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todos os canais</li>
+                            <li><i class="fas fa-check"></i> Filmes e séries</li>
+                            <li><i class="fas fa-check"></i> Qualidade HD/4K</li>
+                            <li><i class="fas fa-check"></i> 3 telas simultâneas</li>
+                            <li><i class="fas fa-check"></i> Suporte 24/7 VIP</li>
+                            <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
+                        </ul>
+                    </div>
+                    <div class="plan-cta">
+                        <a href="#checkout" class="cta-button">ASSINAR AGORA</a>
+                    </div>
+                </div>
+                <div class="plan-card economic">
+                    <div class="economic-tag">PLANO ECONÔMICO</div>
+                    <div class="plan-header">
+                        <h3>ANDROID</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">25</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todos os canais</li>
+                            <li><i class="fas fa-check"></i> Filmes e séries</li>
+                            <li><i class="fas fa-check"></i> Qualidade HD</li>
+                            <li><i class="fas fa-check"></i> 1 tela simultânea</li>
+                            <li><i class="fas fa-check"></i> Apenas dispositivos Android</li>
+                            <li><i class="fas fa-check"></i> Suporte básico</li>
+                        </ul>
+                    </div>
+                    <div class="plan-cta">
+                        <a href="#checkout" class="cta-button">ASSINAR AGORA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="guarantee">
+                <i class="fas fa-shield-alt"></i>
+                <p>Garantia de 7 dias. Não gostou? Devolvemos seu dinheiro!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>O QUE NOSSOS CLIENTES DIZEM</h2>
+                <p>Junte-se a mais de 50.000 clientes satisfeitos</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Cancelei todas as minhas outras assinaturas depois que conheci a BeePlayTV. Tem tudo o que eu preciso e muito mais, com uma qualidade incrível!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Silva">
+                        <div>
+                            <h4>Carlos Silva</h4>
+                            <p>São Paulo, SP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"A melhor decisão que tomei foi assinar a BeePlayTV. Economizo mais de R$ 200 por mês e tenho acesso a muito mais conteúdo. O suporte é excelente!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Oliveira">
+                        <div>
+                            <h4>Ana Oliveira</h4>
+                            <p>Rio de Janeiro, RJ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Minha família inteira adora a BeePlayTV. As crianças têm os desenhos, eu tenho os esportes e minha esposa as séries. Tudo em um só lugar e sem complicação!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Marcos Santos">
+                        <div>
+                            <h4>Marcos Santos</h4>
+                            <p>Belo Horizonte, MG</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>PERGUNTAS FREQUENTES</h2>
+                <p>Tire suas dúvidas sobre a BeePlayTV</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como funciona a BeePlayTV?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A BeePlayTV é um serviço de streaming que oferece acesso a canais de TV ao vivo, filmes e séries através da internet. Após a assinatura, você recebe acesso à nossa plataforma e pode assistir em Smart TVs, celulares, tablets e computadores.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quais dispositivos são compatíveis?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A BeePlayTV é compatível com Smart TVs (Samsung, LG, Sony, TCL, etc.), dispositivos Android (smartphones, tablets, TV Box), iOS (iPhone, iPad), computadores (Windows, Mac) e diversos outros dispositivos como Fire TV Stick, Chromecast e Apple TV.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Preciso de uma internet muito rápida?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Recomendamos uma conexão de pelo menos 10 Mbps para uma experiência ideal em HD. Para conteúdo em 4K, recomendamos 25 Mbps ou mais. Nossa plataforma se adapta automaticamente à sua velocidade de internet para evitar travamentos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Posso cancelar quando quiser?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Não há contratos de fidelidade. Você pode cancelar sua assinatura a qualquer momento, sem multas ou taxas adicionais. O serviço continuará disponível até o final do período pago.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como funciona o teste grátis?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oferecemos 24 horas de teste grátis para que você possa experimentar nossa plataforma antes de assinar. Durante este período, você terá acesso a todos os recursos e conteúdos disponíveis em nossa plataforma.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quais formas de pagamento são aceitas?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Aceitamos cartões de crédito (Visa, Mastercard, American Express, Elo), boleto bancário, PIX e transferência bancária. Todas as transações são seguras e criptografadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Teste Grátis -->
+    <section id="trial" class="trial-section">
+        <div class="container">
+            <div class="trial-content">
+                <h2>EXPERIMENTE GRÁTIS POR 24 HORAS</h2>
+                <p>Sem compromisso, sem cartão de crédito. Apenas preencha o formulário abaixo:</p>
+                <form class="trial-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="WhatsApp" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>Selecione seu dispositivo</option>
+                            <option value="smart-tv">Smart TV</option>
+                            <option value="android">Android (celular/tablet)</option>
+                            <option value="ios">iOS (iPhone/iPad)</option>
+                            <option value="pc">Computador</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cta-button pulse">COMEÇAR TESTE GRÁTIS</button>
+                </form>
+                <div class="trial-note">
+                    <p>Após o teste, você poderá escolher um de nossos planos ou simplesmente não fazer nada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>FALE CONOSCO</h2>
+                <p>Estamos aqui para ajudar</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>E-mail</h3>
+                        <p>suporte@beeplaytv.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>(11) 99999-9999</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Horário de Atendimento</h3>
+                        <p>24 horas por dia, 7 dias por semana</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="WhatsApp">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Assunto</option>
+                                <option value="info">Informações</option>
+                                <option value="support">Suporte Técnico</option>
+                                <option value="billing">Faturamento</option>
+                                <option value="other">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">ENVIAR MENSAGEM</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante de WhatsApp -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Botão Flutuante de Teste -->
+    <div class="trial-float">
+        <a href="#trial" class="trial-float-button">
+            <span>TESTE GRÁTIS</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Notificação de Cookies -->
+    <div class="cookie-notice" id="cookieNotice">
+        <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="#">Política de Privacidade</a>.</p>
+        <button onclick="acceptCookies()">Aceitar</button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="BeePlayTV Logo">
+                    <p>Todo o entretenimento em um só lugar</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Navegação</h3>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#features">Recursos</a></li>
+                            <li><a href="#plans">Planos</a></li>
+                            <li><a href="#faq">Dúvidas</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Suporte</h3>
+                        <ul>
+                            <li><a href="#">Central de Ajuda</a></li>
+                            <li><a href="#">Tutoriais</a></li>
+                            <li><a href="#">Instalação</a></li>
+                            <li><a href="#">Perguntas Frequentes</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Termos de Uso</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Política de Reembolso</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BeePlayTV. Todos os direitos reservados.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
